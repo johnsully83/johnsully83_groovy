@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- TASKS -->
+	<bean id="scheduler" name="scheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean"
+		scope="singleton" lazy-init="false">
+		<property name="autoStartup" value="true" />
+		<property name="overwriteExistingJobs" value="true" />
+		<property name="triggers">
+			<list>
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="primeFixingJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
+<!-- 				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean"> -->
+<!-- 					<property name="jobDetail" ref="primeReplicationJobDetail" /> -->
+<!-- 					<property name="repeatInterval" value="1892160000000" /> -->
+<!-- 					<property name="repeatCount" value="0" /> -->
+<!-- 					<property name="startDelay" value="5000" /> -->
+<!-- 				</bean> -->
+<!-- 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
+<!-- 					<property name="cronExpression" value="${countryReplicationCronExpression}" /> -->
+<!-- 					<property name="jobDetail" ref="currencyReplicationTaskDetail" /> -->
+<!-- 				</bean> -->
+<!-- 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
+<!-- 					<property name="cronExpression" value="${stateReplicationCronExpression}" /> -->
+<!-- 					<property name="jobDetail" ref="stateReplicationJobDetail" /> -->
+<!-- 				</bean> -->
+<!-- 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
+<!-- 					<property name="cronExpression" value="${cityReplicationCronExpression}" /> -->
+<!-- 					<property name="jobDetail" ref="cityReplicationJobDetail" /> -->
+<!-- 				</bean> -->
+<!-- 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
+<!-- 					<property name="cronExpression" value="${currencyReplicationCronExpression}" /> -->
+<!-- 					<property name="jobDetail" ref="currencyReplicationTaskDetail" /> -->
+<!-- 				</bean> -->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="primeFixingJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetBeanName" value="primeFixer" />
+		<property name="targetMethod" value="fix" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="primeReplicationJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetBeanName" value="primeFinder" />
+		<property name="targetMethod" value="find" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="countryReplicationJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetBeanName" value="countryReplicator" />
+		<property name="targetMethod" value="replicate" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="stateReplicationJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetBeanName" value="stateReplicator" />
+		<property name="targetMethod" value="replicate" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="cityReplicationJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetBeanName" value="cityReplicator" />
+		<property name="targetMethod" value="replicate" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="currencyReplicationTaskDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetBeanName" value="currencyReplicator" />
+		<property name="targetMethod" value="replicate" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+<!-- 	<bean id="primeFinder" class="com.home.service.PrimeFinder"> -->
+<!-- 	</bean> -->
+
+</beans>

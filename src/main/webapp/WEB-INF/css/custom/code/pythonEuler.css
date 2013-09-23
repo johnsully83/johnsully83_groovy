@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+#pythonImage {
+	background-image: url('/img/overlay.png');
+	background-repeat: repeat;
+	margin: 1em; 
+	padding: 1em;
+	border-radius: 1em;
+}
+
+#pythonWrapper {
+	padding-top: 6em;
+}

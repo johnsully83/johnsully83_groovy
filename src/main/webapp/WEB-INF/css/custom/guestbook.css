@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #EFEFEF;
+}
+
+#wrapper {
+	margin: 2em 4em;
+	background-color: #5FC0CE;
+	border-radius: 1em 1em 1em 1em;
+}
+
+#guestTable {
+	margin:1em auto;
+}
+
+.labelWrapper {
+	width: 80px;
+}
+
+#guestTable td {
+	vertical-align: top;
+}
+
+#submitWrapper {
+	text-align:left;
+}

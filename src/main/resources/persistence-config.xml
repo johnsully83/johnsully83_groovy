@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/data/mongo
+		http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+	<mongo:db-factory id="mongoDbFactory" dbname="${mongo.databasename}"
+		host="${mongo.host}" port="${mongo.port}" username="${mongo.username}"
+		password="${mongo.password}" />
+
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+	</bean>
+
+	<tx:annotation-driven />
+	
+	<!-- Needed for EntityManagerFactory -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<!-- Datasources -->
+	<bean id="dataSourceCloudbees" destroy-method="close"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.cloudbees.driverClassName}" />
+		<property name="url" value="${jdbc.cloudbees.url}" />
+		<property name="username" value="${jdbc.cloudbees.user}" />
+		<property name="password" value="${jdbc.cloudbees.password}" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testOnBorrow" value="true" />
+	</bean>
+
+	<!-- JPA Entity Manager for Cloudbees Database -->
+	<bean id="entityManagerFactoryCloudbees"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan">
+			<list>
+				<value>com.home.model.cloud</value>
+			</list>
+		</property>
+		<property name="dataSource" ref="dataSourceCloudbees" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+				<property name="showSql" value="false" />
+				<property name="generateDdl" value="true" />
+			</bean>
+		</property>
+		<property name="persistenceUnitName" value="persistenceUnitCloudbees" />
+		<property name="jpaProperties">
+			<map>
+				<entry key="hibernate.connection.characterEncoding" value="UTF-8" />
+				<entry key="hibernate.connection.charSet" value="UTF-8" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="transactionManagerCloudbees" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryCloudbees" />
+	</bean>
+
+	<!-- MySQL DAOS -->
+	<bean id="guestDao" class="com.home.dao.implementations.SimpleJpaDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.jpa.Guest
+			</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="countryDao" class="com.home.dao.implementations.SimpleJpaDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.jpa.Country
+			</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="stateDao" class="com.home.dao.implementations.SimpleJpaDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.jpa.State
+			</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="cityDao" class="com.home.dao.implementations.SimpleJpaDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.jpa.City
+			</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="currencyDao" class="com.home.dao.implementations.SimpleJpaDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.jpa.Currency
+			</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="currencyValueDao" class="com.home.dao.implementations.SimpleJpaDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.jpa.CurrencyValue
+			</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="latestRatesDao" class="com.home.dao.implementations.SimpleJpaDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.jpa.LatestRates
+			</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="primeDao" class="com.home.dao.implementations.SimpleJpaDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.jpa.Prime
+			</value>
+		</constructor-arg>
+	</bean>
+
+	<!-- MongoDB DAOS -->
+	<bean id="countryMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.mongo.MongoCountry
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="MongoCountry" />
+	</bean>
+
+	<bean id="stateMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.mongo.MongoState
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="MongoState" />
+	</bean>
+
+	<bean id="cityMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.mongo.MongoCity
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="MongoCity" />
+	</bean>
+
+	<bean id="currencyMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.mongo.MongoCurrency
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="MongoCurrency" />
+	</bean>
+
+	<bean id="primeMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.mongo.MongoPrime
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="Prime" />
+	</bean>
+
+</beans>

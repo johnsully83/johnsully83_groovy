@@ -1,0 +1,134 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>	
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Euler Solutions (JAVA)</title>
+<link rel="icon" href="/img/icon.ico">
+<link rel="shortcut icon" href="/img/icon.ico">
+<link rel="stylesheet" type="text/css" href="/css/library/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/library/jqueryui/jquery-ui.custom.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/custom/core.css" />
+<link rel="stylesheet" type="text/css" href="/css/custom/code.css" />
+<link rel="stylesheet" type="text/css" href="/css/custom/code/javaEuler.css" />
+<script type="text/javascript" src="/javascript/library/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/javascript/library/jqueryui/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="/javascript/custom/core.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23673631-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+	<jsp:include page="../../tags/navbar.jsp" />
+	<jsp:include page="../../tags/header.jsp" />
+
+	<div id="wrapper" class="blue">
+		<jsp:include page="../../tags/codeHeader.jsp"></jsp:include>
+		<div id="javaWrapper">
+			<div class="image">
+				<a href="http://www.oracle.com/technetwork/java/index.html" target="_blank"><img id="javaImage" alt="Java Logo" src="/img/logoJava.png" /></a>
+			</div>
+			<p class="info">
+				<a href="http://projecteuler.net" target="_blank">Project Euler</a> is a website that 
+				lists and allows members to submit solutions to mathematics problems that are designed in a computer 
+				programming context; the use of mathematical knowledge and methods as well as the ability to use a programming 
+				language effectively and in a mathematical way is necessary to answer the questions.  I answered a 
+				bunch of these about a year ago when I was starting JAVA, and here are my solutions to them.
+			</p>
+			<div class="info" id="javaCode">
+				<ol id="answerList">
+					<li>
+						<div class="javaSection">
+							<ul class="codeList">
+								<li><span> Question: A Pythagorean triplet is a set
+										of three natural numbers, a&lt;b&lt;c, for which, a^2+b^2=c^2.
+										There exists exactly one Pythagorean triplet for which
+										a+b+c=1000. Find the prodct abc. </span></li>
+								<li><span> Solution: 31875000 </span></li>
+							</ul>
+							<div class="javaAnswer">
+								<object type="application/pdf"
+									data="/pdf/pythagoreanTriplet.pdf#scrollbar=1&navpanes=0&toolbar=0"
+									width="850" height="500"></object>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="javaSection">
+							<ul class="codeList">
+								<li><span> Question: Find the sum of all the primes
+										below two million. </span></li>
+								<li><span> Solution: 142913828922 </span></li>
+							</ul>
+							<div class="javaAnswer">
+								<object type="application/pdf"
+									data="/pdf/sumPrime.pdf#scrollbar=1&navpanes=0&toolbar=0&toolbar=0"
+									width="850" height="500"></object>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="javaSection">
+							<ul class="codeList">
+								<li><span> Question: What is the value of the first
+										triangle number to have over five hundred divisors? </span></li>
+								<li><span> Solution: 76576500 </span></li>
+							</ul>
+							<div class="javaAnswer">
+								<object type="application/pdf"
+									data="/pdf/triangleNumberDivisor.pdf#scrollbar=1&navpanes=0&toolbar=0"
+									width="850" height="500"></object>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="javaSection">
+							<ul class="codeList">
+								<li><span> Question: Work out the first ten digits of
+										the sum of the following one-hundred 50-digit numbers. </span></li>
+								<li><span> Solution: 5537376230 </span></li>
+							</ul>
+							<div class="javaAnswer">
+								<object type="application/pdf"
+									data="/pdf/sumBigNums.pdf#scrollbar=1&navpanes=0&toolbar=0"
+									width="850" height="500"></object>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="javaSection">
+							<ul class="codeList">
+								<li><span> Question: See <a
+										href="http://projecteuler.net/problem=14" target="_blank">Project
+											Euler Problem 14</a> for more info. Which starting number, under
+										one million, produces the longest chain of numbers generated by
+										the Collatz sequence?
+								</span></li>
+								<li><span> Solution: 837799 </span></li>
+							</ul>
+							<div class="javaAnswer">
+								<object type="application/pdf"
+									data="/pdf/collatz.pdf#scrollbar=1&navpanes=0&toolbar=0" width="850"
+									height="500"></object>
+							</div>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	
+	<jsp:include page="../../tags/navigation.jsp" />
+</body>
+</html>

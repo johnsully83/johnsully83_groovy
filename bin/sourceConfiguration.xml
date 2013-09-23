@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="trafficScoreSourceConfiguration" class="com.home.model.configuration.sourceconfiguration.implementations.TrafficScoreSourceConfiguration">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.scoring.implementations.TrafficScore
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="Traffic" />
+		<constructor-arg index="2" type="java.math.BigDecimal" value="${trafficSourceWeight}" />
+	</bean>
+	
+	<bean id="weatherScoreSourceConfiguration" class="com.home.model.configuration.sourceconfiguration.implementations.WeatherScoreSourceConfiguration">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.scoring.implementations.WeatherScore
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="Weather" />
+		<constructor-arg index="2" type="java.math.BigDecimal" value="${weatherSourceWeight}" />
+	</bean>
+	
+	<bean id="footTrafficScoreSourceConfiguration" class="com.home.model.configuration.sourceconfiguration.implementations.FootTrafficScoreSourceConfiguration">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.scoring.implementations.FootTrafficScore
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="Foot Traffic" />
+		<constructor-arg index="2" type="java.math.BigDecimal" value="${footTrafficSourceWeight}" />
+	</bean>
+	
+	<bean id="eventScoreSourceConfiguration" class="com.home.model.configuration.sourceconfiguration.implementations.EventScoreSourceConfiguration">
+		<constructor-arg index="0">
+			<value>
+				com.home.model.cloud.scoring.implementations.EventScore
+			</value>
+		</constructor-arg>
+		<constructor-arg index="1" value="Events" />
+		<constructor-arg index="2" type="java.math.BigDecimal" value="${eventSourceWeight}" />
+	</bean>
+
+</beans>

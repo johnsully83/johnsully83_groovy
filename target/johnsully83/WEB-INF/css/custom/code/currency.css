@@ -1,0 +1,98 @@
+@CHARSET "ISO-8859-1";
+
+#currencyWrapper {
+	padding-bottom: 5em;
+}
+
+#openExchangeImage {
+	margin: 5em auto 1em auto;
+	width: 50%;
+}
+
+#currencyForm input:focus {
+	border-color: #FF8300 !important;
+	-webkit-transition: .2s, box-shadow linear .2s;
+	-moz-transition: .2s, box-shadow linear .2s;
+	-o-transition: .2s, box-shadow linear .2s;
+	transition: .2s, box-shadow linear .2s;
+}
+
+#currencyForm {
+	width: 50%;
+	margin: auto;
+	text-align: center;
+}
+
+#currencyTable {
+	width: 100%;
+	text-align: center;
+}
+
+#calculateButton {
+	display: inline-block;
+	padding: 12px 32px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	background: #FF8300;
+	color: #444;
+}
+
+#calculateButton:hover {
+	background: #DD6100;
+	color: #222;
+}
+
+.select2-container {
+	border: 2px solid #AAAAAA;
+	margin-bottom: 9px;
+	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+input[type="text"] {
+	width: 235px;
+	padding: 4px 6px;
+	margin-bottom: 9px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #555;
+	display: inline-block;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	height: 20px;
+	text-align: right;
+}
+
+select {
+	color: #555;
+	display: inline-block;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+label {
+	height: auto;
+	padding: 4px 6px;
+	margin-bottom: 9px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #555;
+	display: inline-block;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	width: 100%;
+	background-color: #FFF;
+}
