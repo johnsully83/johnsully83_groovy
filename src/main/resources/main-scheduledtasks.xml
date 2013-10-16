@@ -17,28 +17,28 @@
 					<property name="repeatCount" value="0" />
 					<property name="startDelay" value="5000" />
 				</bean>
-<!-- 				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean"> -->
-<!-- 					<property name="jobDetail" ref="primeReplicationJobDetail" /> -->
-<!-- 					<property name="repeatInterval" value="1892160000000" /> -->
-<!-- 					<property name="repeatCount" value="0" /> -->
-<!-- 					<property name="startDelay" value="5000" /> -->
-<!-- 				</bean> -->
-<!-- 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
-<!-- 					<property name="cronExpression" value="${countryReplicationCronExpression}" /> -->
-<!-- 					<property name="jobDetail" ref="currencyReplicationTaskDetail" /> -->
-<!-- 				</bean> -->
-<!-- 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
-<!-- 					<property name="cronExpression" value="${stateReplicationCronExpression}" /> -->
-<!-- 					<property name="jobDetail" ref="stateReplicationJobDetail" /> -->
-<!-- 				</bean> -->
-<!-- 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
-<!-- 					<property name="cronExpression" value="${cityReplicationCronExpression}" /> -->
-<!-- 					<property name="jobDetail" ref="cityReplicationJobDetail" /> -->
-<!-- 				</bean> -->
-<!-- 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
-<!-- 					<property name="cronExpression" value="${currencyReplicationCronExpression}" /> -->
-<!-- 					<property name="jobDetail" ref="currencyReplicationTaskDetail" /> -->
-<!-- 				</bean> -->
+				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+					<property name="jobDetail" ref="primeReplicationJobDetail" />
+					<property name="repeatInterval" value="1892160000000" />
+					<property name="repeatCount" value="0" />
+					<property name="startDelay" value="5000" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="cronExpression" value="${countryReplicationCronExpression}" />
+					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="cronExpression" value="${stateReplicationCronExpression}" />
+					<property name="jobDetail" ref="stateReplicationJobDetail" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="cronExpression" value="${cityReplicationCronExpression}" />
+					<property name="jobDetail" ref="cityReplicationJobDetail" />
+				</bean>
+				<bean class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="cronExpression" value="${currencyReplicationCronExpression}" />
+					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
+				</bean>
 			</list>
 		</property>
 	</bean>
