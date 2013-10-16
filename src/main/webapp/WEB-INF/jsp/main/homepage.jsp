@@ -43,6 +43,10 @@
 				</a>
 			</span>
 			to dynamically deploy this site using Jenkins whenever I commit to my Cloudbees-hosted repository.
+			In addition, I've recently added some new technologies.  I'm now using quite a bit of MongoDB,
+			including a grand total of 1 Map-Reduce function (and lots of other historic tables, such as currencies).  
+			In addition, a bit of the site is now written entirely in Groovy; in particular, the 
+			Cryptography page (under the 'Math' section) is 100% Groovy and UI.  
 		</p>
 		
 		<p class="info">
