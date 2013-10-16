@@ -5,23 +5,23 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="applicationContextProvider" class="com.home.ApplicationContextProvider">
+	<bean id="applicationContextProvider" class="com.johnsully83.ApplicationContextProvider">
 	</bean>
 	
-	<bean id="groovyObjectTargetClassPreservingBeanFactoryPostProcessor" class="com.home.utility.GroovyObjectTargetClassPreservingBeanFactoryPostProcessor">
+	<bean id="groovyObjectTargetClassPreservingBeanFactoryPostProcessor" class="com.johnsully83.utility.GroovyObjectTargetClassPreservingBeanFactoryPostProcessor">
 	</bean>
 	
-	<context:component-scan base-package="com.home.service" />
-	<context:component-scan base-package="com.home.events" />
+	<context:component-scan base-package="com.johnsully83.service" />
+	<context:component-scan base-package="com.johnsully83.events" />
 	
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
-	<bean id="appSettings" class="com.home.AppSettings">
+	<bean id="appSettings" class="com.johnsully83.AppSettings">
 		<constructor-arg index="0" value="${dateFormat}" />
 		<constructor-arg index="1" value="${emailSender}" />
 	</bean>
 	
-	<bean id="openExchangeConfig" class="com.home.model.config.OpenExchangeConfig">
+	<bean id="openExchangeConfig" class="com.johnsully83.model.config.OpenExchangeConfig">
 		<constructor-arg index="0" value="${openExchangeBaseUrl}" />
 		<constructor-arg index="1" value="${openExchangeTypeListEndpoint}" />
 		<constructor-arg index="2" value="${openExchangeLatestRatesEndpoint}" />
@@ -42,7 +42,7 @@
 	</bean>
 
 	<!-- Emailer -->
-	<bean id="mailService" class="com.home.email.simple.SimpleMailService">
+	<bean id="emailer" class="com.johnsully83.email.simple.SimpleMailService">
 		<property name="host" value="${mailhost}" />
 		<property name="port" value="${mailport}" />
 		<property name="username" value="${mailusername}" />

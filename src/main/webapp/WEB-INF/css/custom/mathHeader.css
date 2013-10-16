@@ -1,11 +1,11 @@
 @CHARSET "UTF-8";
 
-#mathHeaderWrapper, #mathHeaderWrapper:hover {
+#mathHeaderWrapper,#mathHeaderWrapper:hover {
 	border-radius: 1em 1em 0 0;
 }
 
 #mathMenu {
-	width:100%;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -24,20 +24,20 @@
 }
 
 .mathHeader {
-	text-align : center;
+	text-align: center;
 }
 
 .mathSubtext {
 	float: left;
 	display: inline;
-	text-align : center;
+	text-align: center;
 }
 
-.right, .right:hover {
+.right,.right:hover {
 	border-radius: 0 0.5em 0 0;
 }
 
-.left, .left:hover {
+.left,.left:hover {
 	border-radius: 0.5em 0 0 0;
 }
 

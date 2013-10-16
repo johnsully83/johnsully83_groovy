@@ -10,6 +10,6 @@ function(key, values) {
 		result.duplicateEntries++;
 		result.allPrimesForIndex.push(values[i]);
 	}
-	
+
 	return result;
 }

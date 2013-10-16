@@ -85,7 +85,7 @@
 		<property name="concurrent" value="false" />
 	</bean>
 	
-<!-- 	<bean id="primeFinder" class="com.home.service.PrimeFinder"> -->
+<!-- 	<bean id="primeFinder" class="com.johnsully83.service.PrimeFinder"> -->
 <!-- 	</bean> -->
 
 </beans>

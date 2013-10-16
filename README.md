@@ -1,9 +1,7 @@
-johnsully83 Groovy Version!
+johnsully83
 ===========
 
-*My personal website, but Groovier*
-
-To be updated...
+*My personal website*
 
 This is my own personal website, located at [johnsully83.com](http://johnsully83.com).  I originally made this back in college when auto-playing music and flashing lights on pages were still mildly popular, and have since created two other versions of it.  
 

@@ -38,7 +38,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="packagesToScan">
 			<list>
-				<value>com.home.model.cloud</value>
+				<value>com.johnsully83.model.cloud</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="dataSourceCloudbees" />
@@ -63,111 +63,111 @@
 	</bean>
 
 	<!-- MySQL DAOS -->
-	<bean id="guestDao" class="com.home.dao.implementations.SimpleJpaDao">
+	<bean id="guestDao" class="com.johnsully83.dao.implementations.SimpleJpaDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.jpa.Guest
+				com.johnsully83.model.cloud.jpa.Guest
 			</value>
 		</constructor-arg>
 	</bean>
 
-	<bean id="countryDao" class="com.home.dao.implementations.SimpleJpaDao">
+	<bean id="countryDao" class="com.johnsully83.dao.implementations.SimpleJpaDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.jpa.Country
+				com.johnsully83.model.cloud.jpa.Country
 			</value>
 		</constructor-arg>
 	</bean>
 
-	<bean id="stateDao" class="com.home.dao.implementations.SimpleJpaDao">
+	<bean id="stateDao" class="com.johnsully83.dao.implementations.SimpleJpaDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.jpa.State
+				com.johnsully83.model.cloud.jpa.State
 			</value>
 		</constructor-arg>
 	</bean>
 
-	<bean id="cityDao" class="com.home.dao.implementations.SimpleJpaDao">
+	<bean id="cityDao" class="com.johnsully83.dao.implementations.SimpleJpaDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.jpa.City
+				com.johnsully83.model.cloud.jpa.City
 			</value>
 		</constructor-arg>
 	</bean>
 
-	<bean id="currencyDao" class="com.home.dao.implementations.SimpleJpaDao">
+	<bean id="currencyDao" class="com.johnsully83.dao.implementations.SimpleJpaDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.jpa.Currency
+				com.johnsully83.model.cloud.jpa.Currency
 			</value>
 		</constructor-arg>
 	</bean>
 
-	<bean id="currencyValueDao" class="com.home.dao.implementations.SimpleJpaDao">
+	<bean id="currencyValueDao" class="com.johnsully83.dao.implementations.SimpleJpaDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.jpa.CurrencyValue
+				com.johnsully83.model.cloud.jpa.CurrencyValue
 			</value>
 		</constructor-arg>
 	</bean>
 
-	<bean id="latestRatesDao" class="com.home.dao.implementations.SimpleJpaDao">
+	<bean id="latestRatesDao" class="com.johnsully83.dao.implementations.SimpleJpaDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.jpa.LatestRates
+				com.johnsully83.model.cloud.jpa.LatestRates
 			</value>
 		</constructor-arg>
 	</bean>
 
-	<bean id="primeDao" class="com.home.dao.implementations.SimpleJpaDao">
+	<bean id="primeDao" class="com.johnsully83.dao.implementations.SimpleJpaDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.jpa.Prime
+				com.johnsully83.model.cloud.jpa.Prime
 			</value>
 		</constructor-arg>
 	</bean>
 
 	<!-- MongoDB DAOS -->
-	<bean id="countryMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+	<bean id="countryMongoDao" class="com.johnsully83.dao.implementations.SimpleMongoDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.mongo.MongoCountry
+				com.johnsully83.model.cloud.mongo.MongoCountry
 			</value>
 		</constructor-arg>
 		<constructor-arg index="1" value="MongoCountry" />
 	</bean>
 
-	<bean id="stateMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+	<bean id="stateMongoDao" class="com.johnsully83.dao.implementations.SimpleMongoDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.mongo.MongoState
+				com.johnsully83.model.cloud.mongo.MongoState
 			</value>
 		</constructor-arg>
 		<constructor-arg index="1" value="MongoState" />
 	</bean>
 
-	<bean id="cityMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+	<bean id="cityMongoDao" class="com.johnsully83.dao.implementations.SimpleMongoDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.mongo.MongoCity
+				com.johnsully83.model.cloud.mongo.MongoCity
 			</value>
 		</constructor-arg>
 		<constructor-arg index="1" value="MongoCity" />
 	</bean>
 
-	<bean id="currencyMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+	<bean id="currencyMongoDao" class="com.johnsully83.dao.implementations.SimpleMongoDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.mongo.MongoCurrency
+				com.johnsully83.model.cloud.mongo.MongoCurrency
 			</value>
 		</constructor-arg>
 		<constructor-arg index="1" value="MongoCurrency" />
 	</bean>
 
-	<bean id="primeMongoDao" class="com.home.dao.implementations.SimpleMongoDao">
+	<bean id="primeMongoDao" class="com.johnsully83.dao.implementations.SimpleMongoDao">
 		<constructor-arg index="0">
 			<value>
-				com.home.model.cloud.mongo.MongoPrime
+				com.johnsully83.model.cloud.mongo.MongoPrime
 			</value>
 		</constructor-arg>
 		<constructor-arg index="1" value="Prime" />

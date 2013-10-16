@@ -11,12 +11,12 @@
 				Check out some prime numbers I generate in this application.
 			</p>
 		</li>
-		<li id='proofs' class='yellow right' onclick="openPage('/navigate/math?page=proofs');">
+		<li id='crypto' class='yellow right' onclick="openPage('/navigate/math?page=crypto');">
 			<p class="mathHeader">
-				Proofs
+				Cryptography
 			</p>
 			<p class="mathSubtext">
-				Some of my old college proofs that I happened to still be holding onto.
+				A page where you can encrypt/decrypt with some of the more common cryptographic algorithms.
 			</p>
 		</li>
 	</ul>
