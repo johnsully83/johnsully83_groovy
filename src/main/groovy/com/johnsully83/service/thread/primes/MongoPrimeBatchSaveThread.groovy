@@ -23,16 +23,34 @@ class MongoPrimeBatchSaveThread implements Runnable {
 	
 	@Override
 	public void run() {
-		log.info("Beginning merging of prime batch: primes #"+firstNextID+" to #"+(firstNextID+primesToSave.size()-1));
-		def primeBatchs = primesToSave.collate(50);
+		def primeBatchs = primesToSave.collate(20);
 		
 		int nextOffset = 0;
 		
 		primeBatchs.each { primeBatch ->
 			primeBatch.each { prime ->
-				primeMongoDao.merge(new MongoPrime(firstNextID+nextOffset++, prime));
+				int index = firstNextID + nextOffset++;
+				
+				try {
+					merge(new MongoPrime(index, prime), true);
+				} catch(Exception e) {
+					log.error("Error merging prime #${index} value ${prime}", e)
+				}
 			}
 		}
 	}
+	
+	def merge = { MongoPrime prime, Boolean retry ->
+		try {
+			primeMongoDao.merge(prime);
+		} catch(Exception e) {
+			if(retry) {
+				merge(prime, false);
+			}
+			
+			throw e;
+		}
+	}
+	
 }
 

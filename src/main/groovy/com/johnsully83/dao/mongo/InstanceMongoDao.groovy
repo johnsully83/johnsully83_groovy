@@ -16,17 +16,10 @@ import com.johnsully83.model.enumeration.mongo.MapReduceFunctions;
 
 class InstanceMongoDao<PK extends Comparable<PK>, T extends MongoCloudTable<PK>> implements MongoDao<T, PK> {
 	
-	private MongoOperations mongoOperations;
+	private final MongoOperations mongoOperations = AppContext.getApplicationContext().getBean("mongoTemplate", MongoOperations.class);
 	
-	private final Class<T> entityClass;
-	private final String collectionName;
-
-	InstanceMongoDao(Class<T> entityClass, String collectionName) {
-		super();
-		this.mongoOperations = AppContext.getApplicationContext().getBean("mongoTemplate", MongoOperations.class);
-		this.entityClass = entityClass;
-		this.collectionName = collectionName;
-	}
+	private Class<T> entityClass;
+	private String collectionName;
 
 	@Override
 	public void add(T record) {
