@@ -27,22 +27,22 @@ class CryptoController {
 		JSONObject response = new JSONObject();
 		
 		try {
-			if(Utility.nullOrEmpty(wrapper.getEncryptionKey())) {
-				wrapper.setEncryptionKey(RC4.generateKey())
+			if(!wrapper.encryptionKey) {
+				wrapper.encryptionKey = RC4.generateKey()
 			}
 			
-			String result = "Error";
-			if(CryptoMethod.ENCRYPT.value().equalsIgnoreCase(wrapper.getMethod().value)) {
-				result = RC4.encryptAndEncode(wrapper.getValue(), wrapper.getEncryptionKey());
+			def result = "Error";
+			if(CryptoMethod.ENCRYPT.value().equalsIgnoreCase(wrapper.method.value)) {
+				result = RC4.encryptAndEncode(wrapper.value, wrapper.encryptionKey);
 			} else {
-				result = RC4.decodeAndDecrypt(wrapper.getValue(), wrapper.getEncryptionKey());
+				result = RC4.decodeAndDecrypt(wrapper.value, wrapper.encryptionKey);
 			}
 			
 			response.put("success", true);
 			response.put("result", result);
-			response.put("encryptionKey", wrapper.getEncryptionKey());
+			response.put("encryptionKey", wrapper.encryptionKey);
 		} catch(CryptoException e) {
-			log.error("Error performinging RC4 "+wrapper.getMethod(), e);
+			log.error("Error performinging RC4 "+wrapper.method, e);
 			response.put("success", false);
 		}
 		
@@ -55,22 +55,22 @@ class CryptoController {
 		JSONObject response = new JSONObject();
 		
 		try {
-			if(Utility.nullOrEmpty(wrapper.getEncryptionKey())) {
-				wrapper.setEncryptionKey(TripleDES.generateKey())
+			if(!wrapper.encryptionKey) {
+				wrapper.encryptionKey = RC4.generateKey()
 			}
 			
-			String result = "Error";
-			if(CryptoMethod.ENCRYPT.value().equalsIgnoreCase(wrapper.getMethod().value)) {
-				result = TripleDES.encryptAndEncode(wrapper.getValue(), wrapper.getEncryptionKey());
+			def result = "Error";
+			if(CryptoMethod.ENCRYPT.value().equalsIgnoreCase(wrapper.method.value)) {
+				result = TripleDES.encryptAndEncode(wrapper.value, wrapper.encryptionKey);
 			} else {
-				result = TripleDES.decodeAndDecrypt(wrapper.getValue(), wrapper.getEncryptionKey());
+				result = TripleDES.decodeAndDecrypt(wrapper.value, wrapper.encryptionKey);
 			}
 			
 			response.put("success", true);
 			response.put("result", result);
-			response.put("encryptionKey", wrapper.getEncryptionKey());
+			response.put("encryptionKey", wrapper.encryptionKey);
 		} catch(CryptoException e) {
-			log.error("Error performinging TripleDES "+wrapper.getMethod(), e);
+			log.error("Error performinging TripleDES "+wrapper.method, e);
 			response.put("success", false);
 		}
 		
