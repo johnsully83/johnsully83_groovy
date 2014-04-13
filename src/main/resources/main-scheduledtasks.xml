@@ -11,18 +11,24 @@
 		<property name="overwriteExistingJobs" value="true" />
 		<property name="triggers">
 			<list>
-				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
-					<property name="jobDetail" ref="primeFixingJobDetail" />
-					<property name="repeatInterval" value="1892160000000" />
-					<property name="repeatCount" value="0" />
-					<property name="startDelay" value="5000" />
-				</bean>
-				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean">
-					<property name="jobDetail" ref="primeReplicationJobDetail" />
-					<property name="repeatInterval" value="1892160000000" />
-					<property name="repeatCount" value="0" />
-					<property name="startDelay" value="5000" />
-				</bean>
+<!-- 				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean"> -->
+<!-- 					<property name="jobDetail" ref="primeFixingJobDetail" /> -->
+<!-- 					<property name="repeatInterval" value="1892160000000" /> -->
+<!-- 					<property name="repeatCount" value="0" /> -->
+<!-- 					<property name="startDelay" value="5000" /> -->
+<!-- 				</bean> -->
+<!-- 				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean"> -->
+<!-- 					<property name="jobDetail" ref="primeReplicationJobDetail" /> -->
+<!-- 					<property name="repeatInterval" value="1892160000000" /> -->
+<!-- 					<property name="repeatCount" value="0" /> -->
+<!-- 					<property name="startDelay" value="5000" /> -->
+<!-- 				</bean> -->
+<!-- 				<bean class="org.springframework.scheduling.quartz.SimpleTriggerBean"> -->
+<!-- 					<property name="jobDetail" ref="primeDeletionJobDetail" /> -->
+<!-- 					<property name="repeatInterval" value="1892160000000" /> -->
+<!-- 					<property name="repeatCount" value="0" /> -->
+<!-- 					<property name="startDelay" value="5000" /> -->
+<!-- 				</bean> 
 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean">
 					<property name="cronExpression" value="${countryReplicationCronExpression}" />
 					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
@@ -38,7 +44,7 @@
 				<bean class="org.springframework.scheduling.quartz.CronTriggerBean">
 					<property name="cronExpression" value="${currencyReplicationCronExpression}" />
 					<property name="jobDetail" ref="currencyReplicationTaskDetail" />
-				</bean>
+				</bean> -->
 			</list>
 		</property>
 	</bean>
@@ -47,6 +53,13 @@
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetBeanName" value="primeFixer" />
 		<property name="targetMethod" value="fix" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="primeDeletionJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetBeanName" value="primeDeleter" />
+		<property name="targetMethod" value="delete" />
 		<property name="concurrent" value="false" />
 	</bean>
 
@@ -84,8 +97,5 @@
 		<property name="targetMethod" value="replicate" />
 		<property name="concurrent" value="false" />
 	</bean>
-	
-<!-- 	<bean id="primeFinder" class="com.johnsully83.service.PrimeFinder"> -->
-<!-- 	</bean> -->
 
 </beans>

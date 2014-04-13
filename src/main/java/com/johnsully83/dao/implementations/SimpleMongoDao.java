@@ -30,6 +30,11 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	}
 
 	@Override
+	public Long count() {
+		return mongoOperations.count(new Query(), entityClass);
+	}
+	
+	@Override
 	public void add(T record) {
 		checkCollectionExists();
 		
@@ -58,6 +63,45 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 		checkCollectionExists();
 		
 		mongoOperations.remove(record);
+	}
+	
+	@Override
+	public void remove(Integer limit) {
+		remove(null, null, limit);
+	}
+	
+	@Override
+	public void remove(Criteria criteria) {
+		remove(criteria, null, null);
+	}
+
+	@Override
+	public void remove(Criteria criteria, Sort sort) {
+		remove(criteria, sort, null);
+	}
+
+	@Override
+	public void remove(Criteria criteria, Integer limit) {
+		remove(criteria, null, limit);
+	}
+
+	@Override
+	public void remove(Criteria criteria, Sort sort, Integer limit) {
+		checkCollectionExists();
+		
+		if(criteria == null) {
+			criteria = new Criteria();
+		}
+		
+		if(sort == null) {
+			sort = new Sort(Sort.Direction.ASC, "_id");
+		}
+		
+		if(limit == null) {
+			mongoOperations.remove(new Query(criteria).with(sort), entityClass);
+		} else {
+			mongoOperations.remove(new Query(criteria).with(sort).limit(limit), entityClass);
+		}
 	}
 
 	@Override
@@ -89,6 +133,11 @@ public class SimpleMongoDao<T extends MongoCloudTable<PK>, PK extends Comparable
 	@Override
 	public List<T> query(Integer limit) {
 		return query(null, null, limit);
+	}
+	
+	@Override
+	public List<T> query(Sort sort, Integer limit) {
+		return query(null, sort, limit);
 	}
 
 	@Override

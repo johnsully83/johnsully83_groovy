@@ -8,11 +8,13 @@
 	<name>johnsully83</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<org.springframework.version>3.2.3.RELEASE</org.springframework.version>
-		<org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
-		<org.slf4j.version>1.6.1</org.slf4j.version>
-		<hibernate.version>4.1.1.Final</hibernate.version>
+		<org.springframework.version>4.0.3.RELEASE</org.springframework.version>
+		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
+		<org.slf4j.version>1.7.6</org.slf4j.version>
+		<hibernate.version>4.3.4.Final</hibernate.version>
+		<jackson.version>2.3.2</jackson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.profiles.active>staging</spring.profiles.active>
 	</properties>
 
 	<dependencies>
@@ -121,6 +123,34 @@
 			<version>${org.springframework.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		
 		<!-- Support for Spring Integration with Mongo DB -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -183,16 +213,22 @@
 			<artifactId>commons-httpclient</artifactId>
 			<version>3.1</version>
 		</dependency>
+		
+		<!-- Quartz Scheduler -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
 			<version>1.7.3</version>
 		</dependency>
+		
+		<!-- E-Mail API -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
+		<!-- Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -210,6 +246,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
 		<!-- JSR 303 with Hibernate Validator -->
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -259,17 +296,39 @@
 			<artifactId>json</artifactId>
 			<version>20090211</version>
 		</dependency>
+		
+		<!-- Jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
 		<!-- DWR -->
 		<dependency>
 			<groupId>dwr</groupId>
 			<artifactId>dwr</artifactId>
 			<version>1.1.3</version>
 		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
+
 		<!-- Dozer to map objects -->
 		<dependency>
 			<groupId>net.sf.dozer</groupId>
@@ -320,22 +379,19 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-discovery</groupId>
-			<artifactId>commons-discovery</artifactId>
-			<version>20040218.194635</version>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		
 		<!-- Hibernate entity manager for using hibernate as engine for JPA -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -357,12 +413,14 @@
 			<artifactId>persistence-api</artifactId>
 			<version>1.0.2</version>
 		</dependency>
+		
 		<!-- Amazon Web Services -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
-			<version>1.3.6</version>
+			<version>1.7.5</version>
 		</dependency>
+		
 		<!-- html scrubber -->
 		<dependency>
 			<groupId>org.jsoup</groupId>
@@ -381,7 +439,7 @@
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<version>2.1.6</version>
+			<version>2.2.2</version>
 		</dependency>
 		
 		<!-- Google Guava -->
@@ -400,18 +458,18 @@
 
 	</dependencies>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>bees-plugins-snapshots</id>
-			<url>http://repository-cloudbees.forge.cloudbees.com/public-snapshot/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+	<pluginRepositories> 
+		<pluginRepository> 
+			<id>bees-plugins-snapshots</id> 
+			<url>http://repository-cloudbees.forge.cloudbees.com/public-release/</url>
+			<releases> 
+				<enabled>true</enabled> 
+			</releases> 
+			<snapshots> 
+				<enabled>false</enabled> 
+			</snapshots> 
+		</pluginRepository> 
+	</pluginRepositories> 
 
 	<repositories>
 		<repository>
@@ -445,12 +503,14 @@
 				<jdbc.cloudbees.url>jdbc:MySql://localhost:3306/johnsully83</jdbc.cloudbees.url>
 				<jdbc.cloudbees.user>apiUser</jdbc.cloudbees.user>
 				<jdbc.cloudbees.password>johnsully123</jdbc.cloudbees.password>
+				
 				<!-- Mongo DB -->
 				<mongo.databasename>j1s854LmEs0ffGr0s8I1GQ</mongo.databasename>
 				<mongo.host>dharma.mongohq.com</mongo.host>
 				<mongo.port>10047</mongo.port>
 				<mongo.username>johnsully83</mongo.username>
 				<mongo.password>rocky9860</mongo.password>
+				
 				<!-- Email -->
 				<mailhost>smtp.sendgrid.net</mailhost>
 				<mailport>587</mailport>
@@ -460,15 +520,12 @@
 				<dateFormat>MM/dd/yyyy</dateFormat>
 
 				<emailSender>johnsully83@gmail.com</emailSender>
+				
 				<!-- Cron expressions -->
-				<countryReplicationCronExpression>0 0 0 1/1 * ? *</countryReplicationCronExpression><!-- 
-					0:00 -->
-				<stateReplicationCronExpression>0 0 1 1/1 * ? *</stateReplicationCronExpression><!-- 
-					1:00 -->
-				<cityReplicationCronExpression>0 0 2 1/1 * ? *</cityReplicationCronExpression><!-- 
-					2:00 -->
-				<currencyReplicationCronExpression>0 30 23 1/1 * ? *</currencyReplicationCronExpression><!-- 
-					23:30 -->
+				<countryReplicationCronExpression>0 0 0 1/1 * ? *</countryReplicationCronExpression><!-- 0:00 -->
+				<stateReplicationCronExpression>0 0 1 1/1 * ? *</stateReplicationCronExpression><!-- 1:00 -->
+				<cityReplicationCronExpression>0 0 2 1/1 * ? *</cityReplicationCronExpression><!-- 2:00 -->
+				<currencyReplicationCronExpression>0 30 23 1/1 * ? *</currencyReplicationCronExpression><!-- 23:30 -->
 
 				<!-- API info -->
 				<geoPlanetApiKey>rRz4PKjV34H9anfx3BhN6Xih2WMjjreaCUMpDxjEYn_Fvwkg95MTOD0RsbrR4UCeFU9KQFlSD2eK.NykPBtfHH7qEVeXe98-</geoPlanetApiKey>
@@ -512,14 +569,10 @@
 				<emailSender>johnsully83@gmail.com</emailSender>
 
 				<!-- Cron expressions -->
-				<countryReplicationCronExpression>0 0 0 1/1 * ? *</countryReplicationCronExpression><!-- 
-					0:00 -->
-				<stateReplicationCronExpression>0 0 1 1/1 * ? *</stateReplicationCronExpression><!-- 
-					1:00 -->
-				<cityReplicationCronExpression>0 0 2 1/1 * ? *</cityReplicationCronExpression><!-- 
-					2:00 -->
-				<currencyReplicationCronExpression>0 30 23 1/1 * ? *</currencyReplicationCronExpression><!-- 
-					23:30 -->
+				<countryReplicationCronExpression>0 0 0 1/1 * ? *</countryReplicationCronExpression><!-- 0:00 -->
+				<stateReplicationCronExpression>0 0 1 1/1 * ? *</stateReplicationCronExpression><!-- 1:00 -->
+				<cityReplicationCronExpression>0 0 2 1/1 * ? *</cityReplicationCronExpression><!-- 2:00 -->
+				<currencyReplicationCronExpression>0 30 23 1/1 * ? *</currencyReplicationCronExpression><!-- 23:30 -->
 
 				<!-- API info -->
 				<geoPlanetApiKey>rRz4PKjV34H9anfx3BhN6Xih2WMjjreaCUMpDxjEYn_Fvwkg95MTOD0RsbrR4UCeFU9KQFlSD2eK.NykPBtfHH7qEVeXe98-</geoPlanetApiKey>
@@ -550,13 +603,26 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>com.cloudbees</groupId>
+					<artifactId>bees-maven-plugin</artifactId>
+					<version>1.3.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<path>/</path>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.0</version>
+					<version>3.1</version>
 					<configuration>
 						<compilerId>groovy-eclipse-compiler</compilerId>
-						<source>1.6</source>
-						<target>1.6</target>
+						<source>1.7</source>
+						<target>1.7</target>
 					</configuration>
 					<dependencies>
 						<dependency>
@@ -572,11 +638,36 @@
 					</dependencies>
 				</plugin>
 				<plugin>
-					<groupId>com.cloudbees</groupId>
-					<artifactId>bees-maven-plugin</artifactId>
-					<version>1.0-SNAPSHOT</version>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.4.3</version>
+					<configuration>
+						<argLine>-Xms512m -Xmx1024m -XX:MaxPermSize=512m -Dspring.profiles.active=${spring.profiles.active}</argLine>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.lesscss</groupId>
+				<artifactId>lesscss-maven-plugin</artifactId>
+				<version>1.3.3</version>
+				<configuration>
+					<sourceDirectory>${project.basedir}/src/main/webapp/less</sourceDirectory>
+					<outputDirectory>${project.basedir}/src/main/webapp/css/less</outputDirectory>
+					<compress>true</compress>
+					<includes>
+						<include>*.less</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

@@ -3,8 +3,7 @@ package com.johnsully83.model.wrapper.mvc.crypto;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.johnsully83.model.enumeration.crypto.CryptoMethod;
 
 @JsonPropertyOrder(value = { "encryptionKey", "value", "method" })

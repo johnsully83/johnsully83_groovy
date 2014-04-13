@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="johnSully83" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="johnSully83" version="3.0">
 	<display-name>johnsully83</display-name>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-					classpath:applicationContext.xml	
-					classpath*:*-workflow.xml	
-					classpath*:*-config.xml
-					classpath*:*-scheduledtasks.xml
+			classpath:applicationContext.xml
+			classpath:security-applicationContext.xml
+			classpath:*-workflow.xml
+			classpath:*-config.xml
+			classpath:*-scheduledtasks.xml
 		</param-value>
 	</context-param>
-	<!-- ******************** FILTERS ******************** -->
+	
+	<!-- ******************** LISTENERS ******************** -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
 		<listener-class>com.johnsully83.ApplicationStartup</listener-class>
 	</listener>
+	
+	<!-- ******************** FILTERS ******************** -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<filter>
 		<filter-name>SessionFilter</filter-name>
 		<filter-class>com.johnsully83.SessionFilter</filter-class>
@@ -33,6 +47,7 @@
 		<filter-name>SessionFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -53,10 +68,13 @@
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/**</url-pattern>
 	</filter-mapping>
+	
 	<!-- ******************** SESSION ******************** -->
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
+	
+	<!-- ******************** SERVLETS ******************** -->
 	<servlet>
 		<servlet-name>main</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -66,6 +84,8 @@
 		<servlet-name>main</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- ******************** ERROR PAGES ******************** -->
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/WEB-INF/jsp/main/error.jsp</location>

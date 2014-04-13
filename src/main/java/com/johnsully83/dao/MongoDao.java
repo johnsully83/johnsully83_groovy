@@ -13,11 +13,23 @@ import com.johnsully83.model.enumeration.mongo.MapReduceFunctions;
 
 public interface MongoDao<T extends MongoCloudTable<PK>, PK extends Comparable<PK>> {
 	
+	public Long count();
+	
 	public void add(T record);
 	
 	public void addAll(List<T> records);
 	
 	public T merge(T record);
+	
+	public void remove(Integer limit);
+	
+	public void remove(Criteria criteria);
+	
+	public void remove(Criteria criteria, Sort sort);
+	
+	public void remove(Criteria criteria, Integer limit);
+	
+	public void remove(Criteria criteria, Sort sort, Integer limit);
 	
 	public void remove(T record);
 	
@@ -30,6 +42,8 @@ public interface MongoDao<T extends MongoCloudTable<PK>, PK extends Comparable<P
 	public List<T> query(Sort sort);
 	
 	public List<T> query(Integer limit);
+	
+	public List<T> query(Sort sort, Integer limit);
 	
 	public List<T> query(Criteria criteria);
 	

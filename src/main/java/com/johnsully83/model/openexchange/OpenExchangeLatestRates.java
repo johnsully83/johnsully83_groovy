@@ -2,10 +2,10 @@ package com.johnsully83.model.openexchange;
 
 import java.util.LinkedHashMap;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.annotate.JsonPropertyOrder;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonPropertyOrder(value = { "disclaimer", "license", "timestamp", "base", "rates" })
 @JsonIgnoreProperties(ignoreUnknown=true)

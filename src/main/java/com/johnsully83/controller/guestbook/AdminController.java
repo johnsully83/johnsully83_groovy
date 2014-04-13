@@ -3,6 +3,7 @@ package com.johnsully83.controller.guestbook;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,8 +24,12 @@ public class AdminController {
 	
 	@RequestMapping(value="login")
 	public String login(@Valid @ModelAttribute("loginForm") LoginForm loginForm) {
-		
 		return "guestbook/admin";
+	}
+	
+	@ModelAttribute(value="loginForm")
+	public void newLoginForm(Model model) {
+		model.addAttribute("loginForm", new LoginForm());
 	}
 
 }
